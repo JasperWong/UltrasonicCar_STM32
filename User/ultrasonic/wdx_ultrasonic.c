@@ -57,17 +57,14 @@ void ultrasonic_GetData(void)
 	/*
 	//超声波（前）启动
 	*/
-	echo_high=0x0350 ;
+//	wait_echo=0x0350;
+	echo_high=0x0350;
 	H_count=0;
 	GPIO_SetBits(ultrasonic2_Tri_PORT,ultrasonic2_Tri_PIN );
 	delay_us(20);
 	GPIO_ResetBits(ultrasonic2_Tri_PORT,ultrasonic2_Tri_PIN );
 	while(!GPIO_ReadInputDataBit(ultrasonic2_Echo_PORT,ultrasonic2_Echo_PIN))									//wait Hight Voltage
-	{	
-//		wait_echo--;
-//		if(!wait_echo)
-//			break;
-	}
+		;
 	while(GPIO_ReadInputDataBit(ultrasonic2_Echo_PORT,ultrasonic2_Echo_PIN) &&echo_high--)		//count high_voltage time
 	{
 		delay_us(10);
